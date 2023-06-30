@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex justify-center flex-col items-center">
+    <div>
+        {% if game_over %}
+        Game over
+        <br>
+        Вы продержались {{current_board.move}} ходов
+        {% else %}
+        <button onclick="document.location='/game-of-life/move'" class="border-2 rounded-3xl bg-gray-300 p-3">Next
+            move
+        </button>
+        {% endif %}
+    </div>
+    <table>
+        {% for row in current_board.board %}
+        <tr>
+            {% for cell in row %}
+            {% if cell == 0 %}
+            <td bgcolor="white"></td>
+            {% else %}
+            <td bgcolor="blue"></td>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+    </table>
+    <style type="text/css">
+    TABLE {
+    width: 600px;
+    height: 600px;
+    border-collapse: collapse;
+    }
+    TD, TH {
+    padding: 3px;
+    border: 1px solid black;
+    }
+    </style>
+</div>
+{% endblock %}
