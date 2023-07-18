@@ -19,7 +19,7 @@ class BoardClass:
                 return 1
             return 0
         else:
-            if sum(sum(board[z][x - 1:x + 2]) for z in range(y - 1, y + 2)) in (3, ):
+            if sum(sum(board[z][x - 1:x + 2]) for z in range(y - 1, y + 2)) in (3, 4):
                 return 1
             return 0
 
@@ -36,3 +36,10 @@ class BoardClass:
                     new_board[row][column] = self.cell_next_state(x=column, y=row, board=self.board, is_dead=True)
         self.board = new_board
         self.move += 1
+
+    def game_over(self, data) -> bool:
+        """ Checks if current state of the board matches latest states"""
+        for key in data:
+            if self.board == data[key]["board"]:
+                return True
+        return False

@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 
-from src.crud import write_to_json, read_last_from_json, game_over, clean_json
+from src.crud import write_to_json, read_last_from_json, clean_json
 from src.models import BoardClass
 
 router = APIRouter(
@@ -38,7 +38,7 @@ def next_move(request: Request):
         })
     current_board.update_board()
 
-    if game_over(current_board, data):
+    if current_board.game_over(data):
         return templates.TemplateResponse("game_page.html", {
             "request": request,
             "current_board": current_board,
