@@ -26,7 +26,7 @@ https://docs.docker.com/desktop/install/windows-install/
 Создаем папку, заходим в неё, клонируем репозиторий.
 ```
 md game-of-life
-cd fgame-of-life
+cd game-of-life
 git clone https://github.com/daminovvv/game-of-life.git
 ```
 
